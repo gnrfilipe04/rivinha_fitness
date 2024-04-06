@@ -56,10 +56,18 @@ class MyTheme with ChangeNotifier {
       buttonTheme: ButtonThemeData(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-        buttonColor: MyColors.green700,
+        buttonColor: MyColors.green500,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: MyColors.green500,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          ),
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        labelStyle: const TextStyle(color: MyColors.gray500),
+        labelStyle: const TextStyle(color: MyColors.gray200),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(width: 1, color: MyColors.gray500),
@@ -69,11 +77,11 @@ class MyTheme with ChangeNotifier {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(width: 1, color: MyColors.gray500),
+          borderSide: const BorderSide(width: 1, color: MyColors.gray200),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(width: 1, color: MyColors.gray500),
+          borderSide: const BorderSide(width: 1, color: MyColors.gray200),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

@@ -1,7 +1,7 @@
 import 'package:rivinha_fitness/model/workout.dart';
 
-class Customer {
-  final String id;
+class CustomerModel {
+  final int id;
   final String name;
   final String email;
   final String phone;
@@ -15,7 +15,7 @@ class Customer {
   late String? photoUrl;
   late List<Workout>? workouts;
 
-  Customer(
+  CustomerModel(
       {required this.id,
       required this.name,
       required this.email,
@@ -30,8 +30,8 @@ class Customer {
       this.confirmPassword,
       this.workouts});
 
-  factory Customer.fromJson(Map<String, dynamic> json) {
-    return Customer(
+  factory CustomerModel.fromJson(Map<String, dynamic> json) {
+    return CustomerModel(
         id: json['id'],
         name: json['name'],
         email: json['email'],
