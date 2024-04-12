@@ -41,6 +41,7 @@ class _NewExerciseState extends State<NewExercise> {
                 Expanded(
                   child: TextFormField(
                     controller: store.setsController,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(labelText: 'Séries'),
                   ),
                 ),
@@ -48,6 +49,7 @@ class _NewExerciseState extends State<NewExercise> {
                 Expanded(
                   child: TextFormField(
                     controller: store.repsController,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(labelText: 'Repeticões'),
                   ),
                 ),
@@ -57,6 +59,7 @@ class _NewExerciseState extends State<NewExercise> {
             TextFormField(
               controller: store.descriptionController,
               maxLines: 5,
+              keyboardType: TextInputType.multiline,
               decoration: const InputDecoration(labelText: 'Observação'),
             ),
             const SizedBox(height: 10),

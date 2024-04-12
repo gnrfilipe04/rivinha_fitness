@@ -13,7 +13,7 @@ mixin _$NewExerciseStore on _NewExerciseStoreBase, Store {
       Atom(name: '_NewExerciseStoreBase.image', context: context);
 
   @override
-  File get image {
+  File? get image {
     _$imageAtom.reportRead();
     return super.image;
   }
@@ -21,7 +21,7 @@ mixin _$NewExerciseStore on _NewExerciseStoreBase, Store {
   bool _imageIsInitialized = false;
 
   @override
-  set image(File value) {
+  set image(File? value) {
     _$imageAtom.reportWrite(value, _imageIsInitialized ? super.image : null,
         () {
       super.image = value;
@@ -41,11 +41,11 @@ mixin _$NewExerciseStore on _NewExerciseStoreBase, Store {
       ActionController(name: '_NewExerciseStoreBase', context: context);
 
   @override
-  dynamic createNewExercise({required ExerciseModel exercise}) {
+  dynamic createNewExercise() {
     final _$actionInfo = _$_NewExerciseStoreBaseActionController.startAction(
         name: '_NewExerciseStoreBase.createNewExercise');
     try {
-      return super.createNewExercise(exercise: exercise);
+      return super.createNewExercise();
     } finally {
       _$_NewExerciseStoreBaseActionController.endAction(_$actionInfo);
     }

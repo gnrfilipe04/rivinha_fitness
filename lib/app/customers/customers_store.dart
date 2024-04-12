@@ -28,14 +28,14 @@ abstract class _CustomerStoreBase with Store {
               exercises: [
                 ExerciseModel(
                     name: 'Supino',
-                    sets: '4',
-                    reps: '10',
+                    sets: 4,
+                    reps: 10,
                     startDate: DateTime.now().toIso8601String(),
                     endDate: DateTime.now().toIso8601String()),
                 ExerciseModel(
                     name: 'Supino Inclinado',
-                    sets: '4',
-                    reps: '10',
+                    sets: 4,
+                    reps: 10,
                     startDate: DateTime.now().toIso8601String(),
                     endDate: DateTime.now().toIso8601String()),
               ])
@@ -58,14 +58,14 @@ abstract class _CustomerStoreBase with Store {
               exercises: [
                 ExerciseModel(
                     name: 'Supino',
-                    sets: '4',
-                    reps: '10',
+                    sets: 4,
+                    reps: 10,
                     startDate: DateTime.now().toIso8601String(),
                     endDate: DateTime.now().toIso8601String()),
                 ExerciseModel(
                     name: 'Supino Inclinado',
-                    sets: '4',
-                    reps: '10',
+                    sets: 4,
+                    reps: 10,
                     startDate: DateTime.now().toIso8601String(),
                     endDate: DateTime.now().toIso8601String()),
               ]),
@@ -76,14 +76,14 @@ abstract class _CustomerStoreBase with Store {
               exercises: [
                 ExerciseModel(
                     name: 'Supino',
-                    sets: '4',
-                    reps: '10',
+                    sets: 4,
+                    reps: 10,
                     startDate: DateTime.now().toIso8601String(),
                     endDate: DateTime.now().toIso8601String()),
                 ExerciseModel(
                     name: 'Supino Inclinado',
-                    sets: '4',
-                    reps: '12',
+                    sets: 4,
+                    reps: 12,
                     startDate: DateTime.now().toIso8601String(),
                     endDate: DateTime.now().toIso8601String()),
               ]),

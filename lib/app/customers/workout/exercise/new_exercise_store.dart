@@ -21,7 +21,7 @@ abstract class _NewExerciseStoreBase with Store {
   final TextEditingController descriptionController = TextEditingController();
 
   @observable
-  late File image;
+  late File? image;
 
   @action
   getImage() async {
@@ -34,8 +34,15 @@ abstract class _NewExerciseStoreBase with Store {
   }
 
   @action
-  createNewExercise({required ExerciseModel exercise}) {
-    workoutStore.addExerciseToWorkout(exercise: exercise);
+  createNewExercise() {
+    ExerciseModel newExercise = ExerciseModel(
+      name: nameController.text,
+      sets: int.tryParse(setsController.text),
+      reps: int.tryParse(repsController.text),
+      description: descriptionController.text,
+      image: image!.path,
+    );
+    workoutStore.addExerciseToWorkout(exercise: newExercise);
     Routefly.push(routePaths.customers.path);
   }
 }

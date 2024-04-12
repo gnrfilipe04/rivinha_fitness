@@ -11,8 +11,8 @@ class ExerciseModel {
   final String? calories;
   final String? steps;
   final String? rest;
-  final String? sets;
-  final String? reps;
+  final int? sets;
+  final int? reps;
   final String? speed;
   final String? weight;
   final String? startDate;
