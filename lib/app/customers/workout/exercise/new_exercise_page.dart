@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:rivinha_fitness/app/config/app_provider.dart';
 import 'package:rivinha_fitness/app/customers/workout/exercise/new_exercise_store.dart';
-import 'package:rivinha_fitness/app/customers/workout/workout_store.dart';
 import 'package:rivinha_fitness/theme/my_colors.dart';
 
 class NewExercise extends StatefulWidget {
