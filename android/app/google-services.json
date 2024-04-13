@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "376058420024",
+    "project_id": "rivinha-56c88",
+    "storage_bucket": "rivinha-56c88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376058420024:android:ddd6433ceec8e2a763bfcd",
+        "android_client_info": {
+          "package_name": "com.example.rivinha_fitness"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs02HbeULRb3NS6n7W4NW_lKOBtaM1jSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376058420024:android:0905c3801248862963bfcd",
+        "android_client_info": {
+          "package_name": "com.gnrfilipe04.rivinha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs02HbeULRb3NS6n7W4NW_lKOBtaM1jSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
