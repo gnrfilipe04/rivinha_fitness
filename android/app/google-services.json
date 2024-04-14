@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "667241799422",
+    "project_id": "rivinha-gym",
+    "storage_bucket": "rivinha-gym.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667241799422:android:41d39249ee14694f118faf",
+        "android_client_info": {
+          "package_name": "com.example.rivinha_fitness"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ5aDT13JPlOlra-_lYQASMUjdsCuvHcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

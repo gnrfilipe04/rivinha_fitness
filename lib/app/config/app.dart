@@ -13,8 +13,8 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: MyTheme.darkTheme,
-      routerConfig: Routefly.routerConfig(
-          routes: routes, initialPath: routePaths.customers.path),
+      routerConfig:
+          Routefly.routerConfig(routes: routes, initialPath: routePaths.auth),
     );
   }
 }
