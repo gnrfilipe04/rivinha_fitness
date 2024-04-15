@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,9 +46,8 @@ abstract class _AuthStoreBase with Store {
     if (!isValid) return;
 
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: customerModel.email.toString(),
-          password: customerModel.password.toString());
+      final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: '', password: '');
 
       if (credential.user!.displayName == null) {
         user = credential;
@@ -55,13 +55,14 @@ abstract class _AuthStoreBase with Store {
       }
 
       print(credential);
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e, stackTrace) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       } else if (e.code == 'channel-error') {
         print('Server fail.');
+        FirebaseCrashlytics.instance.recordError(e, stackTrace);
       }
     }
   }
@@ -69,5 +70,10 @@ abstract class _AuthStoreBase with Store {
   @action
   updateUserInfo({required UserCredential user}) {
     print(user);
+  }
+
+  @action
+  forceCrash() {
+    FirebaseCrashlytics.instance.crash();
   }
 }
