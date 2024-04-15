@@ -66,12 +66,12 @@ class _CustomerPageState extends State<CustomerPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  store.selectedCustomer!.name,
+                                  store.selectedCustomer!.name.toString(),
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text(store.selectedCustomer!.email,
+                                Text(store.selectedCustomer!.email.toString(),
                                     style: const TextStyle(fontSize: 16)),
                               ],
                             )

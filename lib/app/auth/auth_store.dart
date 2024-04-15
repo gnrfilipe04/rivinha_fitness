@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rivinha_fitness/model/customer.dart';
 import 'package:rivinha_fitness/routes.dart';
 import 'package:routefly/routefly.dart';
 part 'auth_store.g.dart';
@@ -12,6 +14,8 @@ class AuthStore = _AuthStoreBase with _$AuthStore;
 abstract class _AuthStoreBase with Store {
   final jsonDecoder = const JsonDecoder();
   final jsonEncoder = const JsonEncoder();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  CustomerModel customerModel = CustomerModel.empty();
 
   @observable
   String email = '';
@@ -36,9 +40,14 @@ abstract class _AuthStoreBase with Store {
 
   @action
   authentication() async {
+    final isValid = formKey.currentState!.validate();
+
+    if (!isValid) return;
+
     try {
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: customerModel.email.toString(),
+          password: customerModel.password.toString());
 
       if (credential.user!.displayName == null) {
         user = credential;
@@ -51,6 +60,8 @@ abstract class _AuthStoreBase with Store {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
+      } else if (e.code == 'channel-error') {
+        print('Server fail.');
       }
     }
   }

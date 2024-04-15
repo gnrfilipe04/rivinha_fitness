@@ -20,6 +20,7 @@ class _AuthPageState extends State<AuthPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Observer(
               builder: (_) => Form(
+                    key: _store.formKey,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +29,11 @@ class _AuthPageState extends State<AuthPage> {
                           const FlutterLogo(size: 150),
                           const SizedBox(height: 20),
                           TextFormField(
-                            onChanged: (v) => _store.email = v,
+                            onChanged: (v) => _store.customerModel.setEmail(v),
+                            validator: (v) =>
+                                _store.customerModel.email.validator(),
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             decoration: const InputDecoration(
                               labelText: 'E-mail',
                               border: OutlineInputBorder(),
@@ -36,7 +41,12 @@ class _AuthPageState extends State<AuthPage> {
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
-                            onChanged: (v) => _store.password = v,
+                            onChanged: (v) =>
+                                _store.customerModel.setPassword(v),
+                            validator: (v) =>
+                                _store.customerModel.password?.validator(),
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             decoration: const InputDecoration(
                               labelText: 'Senha',
                               border: OutlineInputBorder(),

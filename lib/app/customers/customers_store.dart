@@ -15,11 +15,6 @@ abstract class _CustomerStoreBase with Store {
         name: 'João',
         email: 'teste@joao.com',
         phone: '123456789',
-        address: 'Rua 1',
-        city: 'Cidade 1',
-        state: 'Estado 1',
-        zip: '123456',
-        country: 'País 1',
         workouts: [
           Workout(
               id: 0,
@@ -45,11 +40,6 @@ abstract class _CustomerStoreBase with Store {
         name: 'Maria',
         email: 'teste@teste.com',
         phone: '987654321',
-        address: 'Rua 2',
-        city: 'Cidade 2',
-        state: 'Estado 2',
-        zip: '654321',
-        country: 'País 2',
         workouts: [
           Workout(
               id: 0,

@@ -39,7 +39,7 @@ class _CustomersPageState extends State<CustomersPage> {
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                title: Text(customerStore.customers[index].name),
+                title: Text(customerStore.customers[index].name.toString()),
                 leading: CircleAvatar(
                   backgroundColor: MyColors.green500,
                   child: Text(
@@ -48,7 +48,7 @@ class _CustomersPageState extends State<CustomersPage> {
                   ),
                 ),
                 subtitle: Text(
-                  customerStore.customers[index].email,
+                  customerStore.customers[index].email.toString(),
                   style: const TextStyle(color: MyColors.gray100),
                 ),
                 trailing: Icon(Icons.adaptive.arrow_forward),
