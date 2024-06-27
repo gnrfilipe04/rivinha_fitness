@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rivinha_fitness/app/services/database_interface.dart';
 import 'package:rivinha_fitness/model/customer.dart';
