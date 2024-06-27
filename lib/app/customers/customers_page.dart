@@ -62,7 +62,7 @@ class _CustomersPageState extends State<CustomersPage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            print('Adicionar cliente');
+            Routefly.push(routePaths.customers.newCustomer);
           },
           child: const Icon(Icons.add),
         ));

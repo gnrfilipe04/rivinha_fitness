@@ -73,11 +73,11 @@ class CustomerModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        'id': id.toString(),
         'name': name.toString(),
         'email': email.toString(),
         'phone': phone.toString(),
-        'password': password,
+        'password': password.toString(),
         'confirmPassword': confirmPassword,
         'photoUrl': photoUrl,
         'workouts': workouts

@@ -13,6 +13,12 @@ class Workout {
     required this.exercises,
   });
 
+  Workout.empty()
+      : id = 0,
+        name = '',
+        description = '',
+        exercises = [];
+
   factory Workout.fromJson(Map<String, dynamic> json) {
     List<ExerciseModel> exercises = json['exercises'] != null
         ? List<ExerciseModel>.from(

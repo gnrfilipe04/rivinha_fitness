@@ -2,13 +2,14 @@ import 'package:routefly/routefly.dart';
 
 import 'app/app_page.dart' as a0;
 import 'app/auth/auth_page.dart' as a1;
-import 'app/customers/[id]_page.dart' as a6;
+import 'app/customers/[id]_page.dart' as a7;
 import 'app/customers/customers_page.dart' as a2;
-import 'app/customers/workout/[workout]_page.dart' as a5;
-import 'app/customers/workout/exercise/[item]_page.dart' as a4;
-import 'app/customers/workout/exercise/new_exercise_page.dart' as a3;
-import 'app/home/home_page.dart' as a7;
-import 'app/register/register_page.dart' as a8;
+import 'app/customers/new_customer_page.dart' as a3;
+import 'app/customers/workout/[workout]_page.dart' as a6;
+import 'app/customers/workout/exercise/[item]_page.dart' as a5;
+import 'app/customers/workout/exercise/new_exercise_page.dart' as a4;
+import 'app/home/home_page.dart' as a8;
+import 'app/register/register_page.dart' as a9;
 
 List<RouteEntity> get routes => [
   RouteEntity(
@@ -39,12 +40,21 @@ List<RouteEntity> get routes => [
     ),
   ),
   RouteEntity(
+    key: '/customers/new_customer',
+    uri: Uri.parse('/customers/new_customer'),
+    routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
+      ctx,
+      settings,
+      const a3.NewCustomerPage(),
+    ),
+  ),
+  RouteEntity(
     key: '/customers/workout/exercise/new_exercise',
     uri: Uri.parse('/customers/workout/exercise/new_exercise'),
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a3.NewExercise(),
+      const a4.NewExercise(),
     ),
   ),
   RouteEntity(
@@ -53,7 +63,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a4.ExercisePage(),
+      const a5.ExercisePage(),
     ),
   ),
   RouteEntity(
@@ -62,7 +72,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a5.CustomerWorkoutPage(),
+      const a6.CustomerWorkoutPage(),
     ),
   ),
   RouteEntity(
@@ -71,7 +81,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a6.CustomerPage(),
+      const a7.CustomerPage(),
     ),
   ),
   RouteEntity(
@@ -80,7 +90,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a7.MyHomePage(),
+      const a8.MyHomePage(),
     ),
   ),
   RouteEntity(
@@ -89,7 +99,7 @@ List<RouteEntity> get routes => [
     routeBuilder: (ctx, settings) => Routefly.defaultRouteBuilder(
       ctx,
       settings,
-      const a8.RegisterPage(),
+      const a9.RegisterPage(),
     ),
   ),
 ];
@@ -99,6 +109,7 @@ const routePaths = (
   auth: '/auth',
   customers: (
     path: '/customers',
+    newCustomer: '/customers/new_customer',
     workout: (
       path: '/customers/workout',
       exercise: (
