@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class ExerciseModel {
   final String name;
   final String? description;
@@ -17,7 +19,28 @@ class ExerciseModel {
   final String? weight;
   final String? startDate;
   final String? endDate;
-  final int? id;
+  final String id;
+
+  ExerciseModel.empty()
+      : name = '',
+        description = '',
+        image = '',
+        video = '',
+        level = '',
+        time = '',
+        type = '',
+        equipment = '',
+        muscle = '',
+        calories = '',
+        steps = '',
+        rest = '',
+        sets = 0,
+        reps = 0,
+        speed = '',
+        weight = '',
+        startDate = '',
+        endDate = '',
+        id = const Uuid().v4();
 
   ExerciseModel(
       {required this.name,
@@ -38,7 +61,7 @@ class ExerciseModel {
       this.weight,
       this.startDate,
       this.endDate,
-      this.id});
+      required this.id});
 
   factory ExerciseModel.fromJson(Map<String, dynamic> json) {
     return ExerciseModel(

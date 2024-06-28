@@ -3,14 +3,14 @@ import 'package:rivinha_fitness/vos/email.dart';
 import 'package:rivinha_fitness/vos/text.dart';
 
 class CustomerModel {
-  int id;
+  String? id;
   Text _name;
   Email _email;
-  Text _phone;
+  Text? _phone;
   Text? _password;
   Text? _confirmPassword;
   Text? _photoUrl;
-  List<Workout>? _workouts;
+  List<Workout> _workouts;
   DateTime? createdAt;
 
   Text get name => _name;
@@ -19,7 +19,7 @@ class CustomerModel {
   Email get email => _email;
   void setEmail(String? value) => _email = Email(value ?? '');
 
-  Text get phone => _phone;
+  Text? get phone => _phone;
   void setPhone(String? value) => _phone = Text(value ?? '');
 
   Text? get password => _password;
@@ -32,32 +32,39 @@ class CustomerModel {
   Text? get photoUrl => _photoUrl;
   void setPhotoUrl(String? value) => _photoUrl = Text(value ?? '');
 
-  List<Workout>? get workouts => _workouts;
-  void setWorkouts(List<Workout>? value) => _workouts = value;
+  List<Workout> get workouts => _workouts;
+  void setWorkouts(List<Workout> value) => _workouts = value;
 
   CustomerModel({
     required this.id,
     this.createdAt,
     required String name,
     required String email,
-    required String phone,
+    required String? phone,
     String? password,
     String? confirmPassword,
     String? photoUrl,
-    List<Workout>? workouts,
+    required List<Workout> workouts,
   })  : _name = Text(name),
         _email = Email(email),
-        _phone = Text(phone),
+        _phone = Text(phone ?? ''),
         _password = Text(password ?? ''),
         _confirmPassword = Text(confirmPassword ?? ''),
         _photoUrl = Text(photoUrl ?? ''),
         _workouts = workouts;
 
   factory CustomerModel.empty() {
-    return CustomerModel(id: -1, name: '', email: '', phone: '');
+    return CustomerModel(
+        id: null, name: '', email: '', phone: '', workouts: []);
   }
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) {
+    List<dynamic> workouts = json['workouts'];
+    List<Workout> workoutsList = workouts
+        .map((workout) => Workout.fromJson(workout))
+        .toList()
+        .cast<Workout>();
+
     return CustomerModel(
       id: json['id'],
       name: json['name'],
@@ -66,20 +73,41 @@ class CustomerModel {
       password: json['password'],
       confirmPassword: json['confirmPassword'],
       photoUrl: json['photoUrl'],
-      workouts: json['workouts'],
+      workouts: workoutsList,
       createdAt:
           json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id.toString(),
         'name': name.toString(),
         'email': email.toString(),
         'phone': phone.toString(),
-        'password': password.toString(),
-        'confirmPassword': confirmPassword,
-        'photoUrl': photoUrl,
-        'workouts': workouts
+        'photoUrl': photoUrl.toString(),
+        'workouts': workouts.map((e) => e.toJson()).toList()
       };
+
+  CustomerModel copyWith({
+    String? id,
+    String? name,
+    String? email,
+    String? phone,
+    String? password,
+    String? confirmPassword,
+    String? photoUrl,
+    List<Workout>? workouts,
+    DateTime? createdAt,
+  }) {
+    return CustomerModel(
+      id: id ?? this.id,
+      name: name ?? this.name.toString(),
+      email: email ?? this.email.toString(),
+      phone: phone ?? this.phone.toString(),
+      password: password ?? this.password.toString(),
+      confirmPassword: confirmPassword ?? this.confirmPassword.toString(),
+      photoUrl: photoUrl ?? this.photoUrl.toString(),
+      workouts: workouts ?? this.workouts,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
 }

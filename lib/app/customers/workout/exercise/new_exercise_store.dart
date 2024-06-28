@@ -8,6 +8,7 @@ import 'package:rivinha_fitness/app/customers/workout/workout_store.dart';
 import 'package:rivinha_fitness/model/exercise.dart';
 import 'package:rivinha_fitness/routes.dart';
 import 'package:routefly/routefly.dart';
+import 'package:uuid/uuid.dart';
 part 'new_exercise_store.g.dart';
 
 class NewExerciseStore = _NewExerciseStoreBase with _$NewExerciseStore;
@@ -36,6 +37,7 @@ abstract class _NewExerciseStoreBase with Store {
   @action
   createNewExercise() {
     ExerciseModel newExercise = ExerciseModel(
+      id: const Uuid().v4(),
       name: nameController.text,
       sets: int.tryParse(setsController.text),
       reps: int.tryParse(repsController.text),

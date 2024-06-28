@@ -1,7 +1,8 @@
 import 'package:rivinha_fitness/model/exercise.dart';
+import 'package:uuid/uuid.dart';
 
 class Workout {
-  final int id;
+  final String id;
   final String name;
   final String? description;
   final List<ExerciseModel> exercises;
@@ -14,7 +15,7 @@ class Workout {
   });
 
   Workout.empty()
-      : id = 0,
+      : id = const Uuid().v4(),
         name = '',
         description = '',
         exercises = [];
@@ -36,6 +37,20 @@ class Workout {
         'name': name,
         'description': description,
         'id': id,
-        'exercises': exercises
+        'exercises': exercises.map((e) => e.toJson()).toList()
       };
+
+  Workout copyWith({
+    String? id,
+    String? name,
+    String? description,
+    List<ExerciseModel>? exercises,
+  }) {
+    return Workout(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      exercises: exercises ?? this.exercises,
+    );
+  }
 }

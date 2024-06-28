@@ -74,7 +74,7 @@ class _NewCustomerPageState extends State<NewCustomerPage> {
                   const SizedBox(height: 10),
                   TextFormField(
                     onChanged: (v) => store.customer.setPhone(v),
-                    validator: (v) => store.customer.phone.validator(),
+                    validator: (v) => store.customer.phone?.validator(),
                     decoration: const InputDecoration(
                       labelText: 'Celular',
                       border: OutlineInputBorder(),
