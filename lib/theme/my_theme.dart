@@ -36,31 +36,30 @@ class MyTheme with ChangeNotifier {
       dialogTheme: DialogTheme(
         backgroundColor: MyColors.gray600,
         surfaceTintColor: Colors.transparent,
-        titleTextStyle: TextStyle(
-            color: MyColors.green500,
-            fontFamily: GoogleFonts.poppins().fontFamily),
-        contentTextStyle: TextStyle(
-            color: MyColors.green500,
-            fontFamily: GoogleFonts.poppins().fontFamily),
+        titleTextStyle: TextStyle(color: MyColors.green500, fontFamily: GoogleFonts.poppins().fontFamily),
+        contentTextStyle: TextStyle(color: MyColors.green500, fontFamily: GoogleFonts.poppins().fontFamily),
       ),
       appBarTheme: AppBarTheme(
           color: Colors.transparent,
-          titleTextStyle: TextStyle(
-              color: MyColors.gray100,
-              fontSize: 20,
-              fontFamily: GoogleFonts.poppins().fontFamily),
+          titleTextStyle:
+              TextStyle(color: MyColors.gray100, fontSize: 20, fontFamily: GoogleFonts.poppins().fontFamily),
           toolbarTextStyle: const TextStyle(color: MyColors.green500)),
       scaffoldBackgroundColor: MyColors.gray700,
       fontFamily: GoogleFonts.poppins().fontFamily,
       textTheme: GoogleFonts.poppinsTextTheme(baseTheme.textTheme),
       buttonTheme: ButtonThemeData(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
         buttonColor: MyColors.green500,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          minimumSize: const Size.fromHeight(60),
+          textStyle: TextStyle(
+            fontSize: 18,
+            fontFamily: GoogleFonts.poppins().fontFamily,
+          ),
           backgroundColor: MyColors.green500,
+          foregroundColor: MyColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
           ),

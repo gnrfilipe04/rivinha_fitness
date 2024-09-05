@@ -35,11 +35,8 @@ class _NewCustomerPageState extends State<NewCustomerPage> {
           automaticallyImplyLeading: false,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () => {
-              store.imageFile = null,
-              store.customer = CustomerModel.empty(),
-              Navigator.of(context).pop()
-            },
+            onPressed: () =>
+                {store.imageFile = null, store.customer = CustomerModel.empty(), Navigator.of(context).pop()},
           ),
         ),
         body: Observer(
@@ -60,23 +57,17 @@ class _NewCustomerPageState extends State<NewCustomerPage> {
                           borderRadius: BorderRadius.circular(75),
                         ),
                         child: Observer(
-                            builder: (_) => store.hasPhoto &&
-                                    store.imageFile == null
+                            builder: (_) => store.hasPhoto && store.imageFile == null
                                 ? CircleAvatar(
                                     radius: 75,
-                                    backgroundImage: NetworkImage(customerStore
-                                        .selectedCustomer!.photoUrl
-                                        .toString()))
+                                    backgroundImage: NetworkImage(customerStore.selectedCustomer!.photoUrl.toString()))
                                 : store.imageFile == null
                                     ? const Icon(
                                         Icons.add_a_photo,
                                         size: 50,
                                         color: MyColors.gray500,
                                       )
-                                    : CircleAvatar(
-                                        radius: 75,
-                                        backgroundImage:
-                                            FileImage(store.imageFile!))),
+                                    : CircleAvatar(radius: 75, backgroundImage: FileImage(store.imageFile!))),
                       ),
                     );
                   }),
@@ -114,23 +105,17 @@ class _NewCustomerPageState extends State<NewCustomerPage> {
                   }),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                    onPressed: () => customerStore.selectedCustomer == null
-                        ? store.register()
-                        : store.update(),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: MyColors.green500,
-                      minimumSize: const Size.fromHeight(60),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    child: const Text(
-                      'Concluir cadastro',
-                      style: TextStyle(
-                          color: MyColors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
+                    onPressed: () async =>
+                        customerStore.selectedCustomer == null ? await store.register() : await store.update(),
+                    child: store.isLoading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                            ),
+                          )
+                        : Text(customerStore.selectedCustomer == null ? 'Cadastrar' : 'Atualizar'),
                   ),
                 ],
               )),

@@ -21,6 +21,9 @@ abstract class _NewCustomerStoreBase with Store {
   @observable
   File? imageFile;
 
+  @observable
+  bool isLoading = false;
+
   @action
   Future<void> getImage() async {
     final picker = ImagePicker();
@@ -33,13 +36,14 @@ abstract class _NewCustomerStoreBase with Store {
   }
 
   @computed
-  bool get hasPhoto => customer.photoUrl.toString().isNotEmpty;
+  bool get hasPhoto => customerStore.selectedCustomer?.photoUrl.toString().isNotEmpty ?? false;
 
   @action
   register() async {
     try {
       await database.createCustomer(customer: customer);
-      Routefly.navigate(routePaths.customers.path);
+      await Routefly.navigate(routePaths.customers.path);
+      imageFile = null;
     } catch (e) {
       print(e);
     }
@@ -48,10 +52,14 @@ abstract class _NewCustomerStoreBase with Store {
   @action
   update() async {
     try {
+      isLoading = true;
       await database.updateCustomer(customer: customer);
-      Routefly.navigate(routePaths.customers.path);
+      await Routefly.navigate(routePaths.customers.path);
+      imageFile = null;
     } catch (e) {
       print(e);
+    } finally {
+      isLoading = false;
     }
   }
 }

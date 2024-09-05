@@ -57,21 +57,13 @@ class _CustomersPageState extends State<CustomersPage> {
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(
-                            customerStore.customers[index].name.toString()),
+                        title: Text(customerStore.customers[index].name.toString()),
                         leading: CircleAvatar(
                           backgroundColor: MyColors.green500,
-                          backgroundImage: NetworkImage(customerStore
-                              .customers[index].photoUrl
-                              .toString()),
-                          child: customerStore.customers[index].photoUrl
-                                  .toString()
-                                  .isEmpty
+                          backgroundImage: NetworkImage(customerStore.customers[index].photoUrl.toString()),
+                          child: customerStore.customers[index].photoUrl.toString().isEmpty
                               ? Text(
-                                  customerStore.customers[index].name
-                                      .toString()
-                                      .substring(0, 2)
-                                      .toUpperCase(),
+                                  customerStore.customers[index].name.toString().substring(0, 2).toUpperCase(),
                                   style: const TextStyle(color: Colors.white),
                                 )
                               : Container(),
@@ -84,8 +76,7 @@ class _CustomersPageState extends State<CustomersPage> {
                         onTap: () {
                           var customerToEdit = customerStore.customers[index];
 
-                          Routefly.push(routePaths.customers.$id
-                              .changes({'id': customerToEdit.id}));
+                          Routefly.push(routePaths.customers.$id.changes({'id': customerToEdit.id}));
                         },
                       ),
                     );
@@ -94,7 +85,7 @@ class _CustomersPageState extends State<CustomersPage> {
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 CustomerModel customer = CustomerModel.empty();
-                customerStore.selectedCustomer = customer;
+                customerStore.selectedCustomer = null;
                 newCustomerStore.customer = customer;
 
                 Routefly.push(routePaths.customers.newCustomer);
