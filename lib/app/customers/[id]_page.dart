@@ -23,7 +23,8 @@ class _CustomerPageState extends State<CustomerPage> {
 
   @override
   void initState() {
-    store.setSelectedCustomer(id: Routefly.query['id']);
+    var customerId = Routefly.query['id'];
+    store.setSelectedCustomer(id: customerId);
     super.initState();
   }
 
@@ -36,7 +37,7 @@ class _CustomerPageState extends State<CustomerPage> {
                 IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () {
-                    print('Editar cliente');
+                    Routefly.push(routePaths.customers.newCustomer);
                   },
                 ),
               ],
@@ -56,13 +57,25 @@ class _CustomerPageState extends State<CustomerPage> {
                           children: [
                             Row(
                               children: [
-                                const CircleAvatar(
+                                CircleAvatar(
                                   radius: 30,
                                   backgroundColor: MyColors.green700,
-                                  child: Text(
-                                    'C1',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
+                                  backgroundImage: NetworkImage(store
+                                      .selectedCustomer!.photoUrl
+                                      .toString()),
+                                  child: store.selectedCustomer!.photoUrl
+                                          .toString()
+                                          .isEmpty
+                                      ? Text(
+                                          store.selectedCustomer?.name
+                                                  .toString()
+                                                  .substring(0, 2)
+                                                  .toUpperCase() ??
+                                              '',
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        )
+                                      : Container(),
                                 ),
                                 const SizedBox(width: 10),
                                 Column(

@@ -121,6 +121,12 @@ abstract class _CustomerStoreBase with Store {
     customers.firstWhere((element) => element.id == id).workouts.add(workout);
   }
 
+  @computed
+  bool get hasSelectedCustomer => selectedCustomer != null;
+
+  @computed
+  bool get hasWorkouts => workouts.isNotEmpty;
+
   @action
   setSelectedCustomer({required String id}) {
     selectedCustomer = customers.firstWhere((element) => element.id == id);

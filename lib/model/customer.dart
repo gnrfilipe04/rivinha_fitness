@@ -1,9 +1,10 @@
 import 'package:rivinha_fitness/model/workout.dart';
 import 'package:rivinha_fitness/vos/email.dart';
 import 'package:rivinha_fitness/vos/text.dart';
+import 'package:uuid/uuid.dart';
 
 class CustomerModel {
-  String? id;
+  String id;
   Text _name;
   Email _email;
   Text? _phone;
@@ -55,7 +56,7 @@ class CustomerModel {
 
   factory CustomerModel.empty() {
     return CustomerModel(
-        id: null, name: '', email: '', phone: '', workouts: []);
+        id: const Uuid().v4(), name: '', email: '', phone: '', workouts: []);
   }
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) {
@@ -80,6 +81,7 @@ class CustomerModel {
   }
 
   Map<String, dynamic> toJson() => {
+        'id': id,
         'name': name.toString(),
         'email': email.toString(),
         'phone': phone.toString(),
