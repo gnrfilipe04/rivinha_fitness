@@ -61,7 +61,7 @@ class MyTheme with ChangeNotifier {
           backgroundColor: MyColors.green500,
           foregroundColor: MyColors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
+            borderRadius: BorderRadius.circular(50),
           ),
         ),
       ),

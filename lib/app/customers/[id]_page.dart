@@ -46,8 +46,7 @@ class _CustomerPageState extends State<CustomerPage> {
               slivers: [
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -60,20 +59,11 @@ class _CustomerPageState extends State<CustomerPage> {
                                 CircleAvatar(
                                   radius: 30,
                                   backgroundColor: MyColors.green700,
-                                  backgroundImage: NetworkImage(store
-                                      .selectedCustomer!.photoUrl
-                                      .toString()),
-                                  child: store.selectedCustomer!.photoUrl
-                                          .toString()
-                                          .isEmpty
+                                  backgroundImage: NetworkImage(store.selectedCustomer!.photoUrl.toString()),
+                                  child: store.selectedCustomer!.photoUrl.toString().isEmpty
                                       ? Text(
-                                          store.selectedCustomer?.name
-                                                  .toString()
-                                                  .substring(0, 2)
-                                                  .toUpperCase() ??
-                                              '',
-                                          style: const TextStyle(
-                                              color: Colors.white),
+                                          store.selectedCustomer?.name.toString().substring(0, 2).toUpperCase() ?? '',
+                                          style: const TextStyle(color: Colors.white),
                                         )
                                       : Container(),
                                 ),
@@ -83,13 +73,9 @@ class _CustomerPageState extends State<CustomerPage> {
                                   children: [
                                     Text(
                                       store.selectedCustomer!.name.toString(),
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
+                                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                     ),
-                                    Text(
-                                        store.selectedCustomer!.email
-                                            .toString(),
+                                    Text(store.selectedCustomer!.email.toString(),
                                         style: const TextStyle(fontSize: 16)),
                                   ],
                                 )
@@ -105,145 +91,107 @@ class _CustomerPageState extends State<CustomerPage> {
                         ),
                         const SizedBox(height: 20),
                         const Divider(),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                          const Text('Treinos', style: TextStyle(fontSize: 20)),
+                          Row(
                             children: [
-                              const Text('Treinos',
-                                  style: TextStyle(fontSize: 20)),
-                              Row(
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(Icons.add),
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) {
-                                            return AlertDialog(
-                                              title: const Text(
-                                                'Adicionar treino',
-                                                style: TextStyle(fontSize: 18),
+                              IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (_) {
+                                        return AlertDialog(
+                                          title: const Text(
+                                            'Adicionar treino',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                          actionsAlignment: MainAxisAlignment.center,
+                                          actions: [
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Workout newWorkout = Workout.empty();
+                                                store.addWorkout(
+                                                    workout: newWorkout.copyWith(
+                                                  name: 'Treino ${store.workouts.length + 1}',
+                                                  description: 'Treino sem descrição',
+                                                ));
+                                                Navigator.pop(context);
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: MyColors.green500,
+                                                minimumSize: const Size.fromHeight(60),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(50),
+                                                ),
                                               ),
-                                              actionsAlignment:
-                                                  MainAxisAlignment.center,
-                                              actions: [
-                                                ElevatedButton(
-                                                  onPressed: () {
-                                                    Workout newWorkout =
-                                                        Workout.empty();
-                                                    store.addWorkout(
-                                                        workout:
-                                                            newWorkout.copyWith(
-                                                      name:
-                                                          'Treino ${store.workouts.length + 1}',
-                                                      description:
-                                                          'Treino sem descrição',
-                                                    ));
-                                                    Navigator.pop(context);
-                                                  },
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    backgroundColor:
-                                                        MyColors.green500,
-                                                    minimumSize:
-                                                        const Size.fromHeight(
-                                                            60),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              50),
-                                                    ),
-                                                  ),
-                                                  child: const Text(
-                                                    'Criar Treino',
-                                                    style: TextStyle(
-                                                        color: MyColors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 16),
+                                              child: const Text(
+                                                'Criar Treino',
+                                                style: TextStyle(
+                                                    color: MyColors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 10),
+                                              child: ElevatedButton(
+                                                onPressed: () => Navigator.pop(context),
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: MyColors.gray300,
+                                                  minimumSize: const Size.fromHeight(60),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(50),
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 10),
-                                                  child: ElevatedButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(context),
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                      backgroundColor:
-                                                          MyColors.gray300,
-                                                      minimumSize:
-                                                          const Size.fromHeight(
-                                                              60),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                      ),
-                                                    ),
-                                                    child: const Text(
-                                                      'Cancelar',
-                                                      style: TextStyle(
-                                                          color: MyColors.white,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 16),
-                                                    ),
-                                                  ),
+                                                child: const Text(
+                                                  'Cancelar',
+                                                  style: TextStyle(
+                                                      color: MyColors.white, fontWeight: FontWeight.bold, fontSize: 16),
                                                 ),
-                                              ],
-                                              content: const Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  TextField(
-                                                    decoration: InputDecoration(
-                                                        labelText:
-                                                            'Nome do treino'),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  TextField(
-                                                    decoration: InputDecoration(
-                                                        labelText: 'Objetivo'),
-                                                  ),
-                                                ],
                                               ),
-                                            );
-                                          });
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(Icons.calendar_month),
-                                    onPressed: () {
-                                      print('Adicionar treino');
-                                    },
-                                  ),
-                                ],
+                                            ),
+                                          ],
+                                          content: const Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              TextField(
+                                                decoration: InputDecoration(labelText: 'Nome do treino'),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              TextField(
+                                                decoration: InputDecoration(labelText: 'Objetivo'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      });
+                                },
                               ),
-                            ]),
+                              IconButton(
+                                icon: const Icon(Icons.calendar_month),
+                                onPressed: () {
+                                  print('Adicionar treino');
+                                },
+                              ),
+                            ],
+                          ),
+                        ]),
                         const SizedBox(height: 20),
                         Visibility(
-                          visible: store.selectedCustomer!.workouts.isNotEmpty,
+                          visible: store.workouts.isNotEmpty,
                           replacement: const Center(
                             child: Text('Nenhum treino cadastrado'),
                           ),
                           child: Column(
-                            children: store.selectedCustomer!.workouts
+                            children: store.workouts
                                 .map((e) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 2),
+                                      padding: const EdgeInsets.symmetric(vertical: 2),
                                       child: ListItem(
                                         title: e.name,
-                                        description:
-                                            e.description ?? 'Sem descrição',
+                                        description: e.description ?? 'Sem descrição',
                                         onTap: () {
-                                          Routefly.push(routePaths
-                                              .customers.workout.$workout
-                                              .changes({
+                                          Routefly.push(routePaths.customers.workout.$workout.changes({
                                             'workout': jsonEncoder.convert(e),
                                           }));
                                         },
