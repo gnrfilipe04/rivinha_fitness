@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:rivinha_fitness/app/config/app_provider.dart';
+import 'package:rivinha_fitness/modules/core/config/app_provider.dart';
 import 'package:rivinha_fitness/app/customers/customers_store.dart';
 import 'package:rivinha_fitness/app/widgets/list_item.dart';
-import 'package:rivinha_fitness/model/workout.dart';
-import 'package:rivinha_fitness/routes.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/modules/core/config/routes.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
+import 'package:rivinha_fitness/modules/workout/data/models/workout_model.dart';
 import 'package:routefly/routefly.dart';
 
 class CustomerPage extends StatefulWidget {
@@ -110,7 +110,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                           actions: [
                                             ElevatedButton(
                                               onPressed: () {
-                                                Workout newWorkout = Workout.empty();
+                                                WorkoutModel newWorkout = WorkoutModel.empty();
                                                 store.addWorkout(
                                                     workout: newWorkout.copyWith(
                                                   name: 'Treino ${store.workouts.length + 1}',

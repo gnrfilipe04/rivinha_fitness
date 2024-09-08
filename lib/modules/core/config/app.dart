@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rivinha_fitness/routes.dart';
-import 'package:rivinha_fitness/theme/my_theme.dart';
+import 'package:rivinha_fitness/modules/core/config/routes.dart';
+import 'package:rivinha_fitness/app/theme/my_theme.dart';
 import 'package:routefly/routefly.dart';
 
 class App extends StatelessWidget {
@@ -13,8 +13,7 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: MyTheme.darkTheme,
-      routerConfig: Routefly.routerConfig(
-          routes: routes, initialPath: routePaths.customers.path),
+      routerConfig: Routefly.routerConfig(routes: routes, initialPath: routePaths.customers.path),
     );
   }
 }

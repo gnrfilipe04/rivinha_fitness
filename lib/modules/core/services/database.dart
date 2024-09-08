@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:rivinha_fitness/app/services/database_interface.dart';
-import 'package:rivinha_fitness/model/customer.dart';
-import 'package:rivinha_fitness/model/workout.dart';
+import 'package:rivinha_fitness/modules/core/services/database_interface.dart';
+import 'package:rivinha_fitness/modules/customer/data/models/customer_model.dart';
+import 'package:rivinha_fitness/modules/workout/data/models/workout_model.dart';
 import 'package:uuid/uuid.dart';
 
 class Database implements DatabaseInterface {
@@ -32,7 +32,7 @@ class Database implements DatabaseInterface {
   }
 
   @override
-  Future<void> updateWorkoutCustomer({required CustomerModel customer, required List<Workout> workouts}) async {
+  Future<void> updateWorkoutCustomer({required CustomerModel customer, required List<WorkoutModel> workouts}) async {
     return await _firestore.collection('customers').doc(customer.id.toString()).update({
       'workouts': workouts,
     });

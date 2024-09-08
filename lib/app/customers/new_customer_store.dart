@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
-import 'package:rivinha_fitness/app/config/app_provider.dart';
+import 'package:rivinha_fitness/modules/core/config/app_provider.dart';
 import 'package:rivinha_fitness/app/customers/customers_store.dart';
-import 'package:rivinha_fitness/app/services/database.dart';
-import 'package:rivinha_fitness/model/customer.dart';
-import 'package:rivinha_fitness/routes.dart';
+import 'package:rivinha_fitness/modules/core/services/database.dart';
+import 'package:rivinha_fitness/modules/customer/data/models/customer_model.dart';
+import 'package:rivinha_fitness/modules/core/config/routes.dart';
 import 'package:routefly/routefly.dart';
 part 'new_customer_store.g.dart';
 

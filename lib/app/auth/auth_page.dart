@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:rivinha_fitness/app/auth/auth_store.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -30,10 +30,8 @@ class _AuthPageState extends State<AuthPage> {
                           const SizedBox(height: 20),
                           TextFormField(
                             onChanged: (v) => _store.customerModel.setEmail(v),
-                            validator: (v) =>
-                                _store.customerModel.email.validator(),
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            validator: (v) => _store.customerModel.email.validator(),
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
                             decoration: const InputDecoration(
                               labelText: 'E-mail',
                               border: OutlineInputBorder(),
@@ -41,12 +39,9 @@ class _AuthPageState extends State<AuthPage> {
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
-                            onChanged: (v) =>
-                                _store.customerModel.setPassword(v),
-                            validator: (v) =>
-                                _store.customerModel.password?.validator(),
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            onChanged: (v) => _store.customerModel.setPassword(v),
+                            validator: (v) => _store.customerModel.password?.validator(),
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
                             decoration: const InputDecoration(
                               labelText: 'Senha',
                               border: OutlineInputBorder(),
@@ -64,10 +59,7 @@ class _AuthPageState extends State<AuthPage> {
                             ),
                             child: const Text(
                               'Entrar',
-                              style: TextStyle(
-                                  color: MyColors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
+                              style: TextStyle(color: MyColors.white, fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                           ),
                         ]),

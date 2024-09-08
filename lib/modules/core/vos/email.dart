@@ -1,4 +1,4 @@
-import 'package:rivinha_fitness/vos/text.dart';
+import 'package:rivinha_fitness/modules/core/vos/text.dart';
 
 class Email extends Text {
   final String _value;

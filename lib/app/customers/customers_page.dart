@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:rivinha_fitness/app/config/app_provider.dart';
+import 'package:rivinha_fitness/modules/core/config/app_provider.dart';
 import 'package:rivinha_fitness/app/customers/customers_store.dart';
 import 'package:rivinha_fitness/app/customers/new_customer_store.dart';
-import 'package:rivinha_fitness/model/customer.dart';
-import 'package:rivinha_fitness/routes.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/modules/customer/data/models/customer_model.dart';
+import 'package:rivinha_fitness/modules/core/config/routes.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
 import 'package:routefly/routefly.dart';
 
 class CustomersPage extends StatefulWidget {

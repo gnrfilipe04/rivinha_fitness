@@ -1,4 +1,4 @@
-import 'package:rivinha_fitness/vos/value_object.dart';
+import 'package:rivinha_fitness/modules/core/vos/value_object.dart';
 
 class Text implements ValueObject {
   final String _value;

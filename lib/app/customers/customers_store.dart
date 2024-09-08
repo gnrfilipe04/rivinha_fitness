@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
-import 'package:rivinha_fitness/app/services/database.dart';
-import 'package:rivinha_fitness/model/customer.dart';
-import 'package:rivinha_fitness/model/workout.dart';
+import 'package:rivinha_fitness/modules/core/services/database.dart';
+import 'package:rivinha_fitness/modules/customer/data/models/customer_model.dart';
+import 'package:rivinha_fitness/modules/workout/data/models/workout_model.dart';
 part 'customers_store.g.dart';
 
 // ignore: library_private_types_in_public_api
@@ -27,17 +27,17 @@ abstract class _CustomerStoreBase with Store {
   CustomerModel? selectedCustomer;
 
   @observable
-  late ObservableList<Workout> workouts =
-      ObservableList<Workout>.of(selectedCustomer == null ? [] : selectedCustomer!.workouts.asMap().values);
+  late ObservableList<WorkoutModel> workouts =
+      ObservableList<WorkoutModel>.of(selectedCustomer == null ? [] : selectedCustomer!.workouts.asMap().values);
 
   @action
-  addWorkout({required Workout workout}) {
+  addWorkout({required WorkoutModel workout}) {
     workouts.add(workout);
     addWorkoutsInCustomer(id: selectedCustomer!.id, workout: workout);
   }
 
   @action
-  addWorkoutsInCustomer({required String? id, required Workout workout}) async {
+  addWorkoutsInCustomer({required String? id, required WorkoutModel workout}) async {
     selectedCustomer?.workouts.add(workout);
     await database.updateCustomer(customer: selectedCustomer!);
   }

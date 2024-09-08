@@ -5,8 +5,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rivinha_fitness/model/customer.dart';
-import 'package:rivinha_fitness/routes.dart';
+import 'package:rivinha_fitness/modules/customer/data/models/customer_model.dart';
+import 'package:rivinha_fitness/modules/core/config/routes.dart';
 import 'package:routefly/routefly.dart';
 part 'auth_store.g.dart';
 
@@ -46,8 +46,7 @@ abstract class _AuthStoreBase with Store {
     if (!isValid) return;
 
     try {
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: '', password: '');
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: '', password: '');
 
       if (credential.user!.displayName == null) {
         user = credential;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rivinha_fitness/app/auth/auth_store.dart';
-import 'package:rivinha_fitness/app/config/app_provider.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/modules/core/config/app_provider.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -63,10 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: const Text(
                     'Concluir cadastro',
-                    style: TextStyle(
-                        color: MyColors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16),
+                    style: TextStyle(color: MyColors.white, fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
               ],
