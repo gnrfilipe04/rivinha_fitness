@@ -16,12 +16,12 @@ abstract class _WorkoutStoreBase with Store {
 
   @action
   addExerciseToWorkout({required ExerciseModel exercise}) {
-    var exerciseExists = workoutSelected!.exercises.firstWhere((element) => element.id == exercise.id);
+    ExerciseModel? exerciseExists = workoutSelected?.exercises.firstWhere((element) => element.id == exercise.id);
 
-    if (exerciseExists.id == null) {
-      workoutSelected!.exercises.add(exercise);
+    if (exerciseExists == null) {
+      workoutSelected?.exercises.add(exercise);
     } else {
-      workoutSelected!.exercises[workoutSelected!.exercises.indexWhere((element) => element.id == exercise.id)] =
+      workoutSelected?.exercises[workoutSelected!.exercises.indexWhere((element) => element.id == exercise.id)] =
           exercise;
     }
   }
