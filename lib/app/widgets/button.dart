@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
 
 class Button extends StatefulWidget {
   const Button(
@@ -32,10 +32,7 @@ class _ButtonState extends State<Button> {
       ),
       child: Text(
         widget.title,
-        style: TextStyle(
-            color: widget.titleColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 16),
+        style: TextStyle(color: widget.titleColor, fontWeight: FontWeight.bold, fontSize: 16),
       ),
     );
   }

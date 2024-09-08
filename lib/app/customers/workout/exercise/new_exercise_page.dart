@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:rivinha_fitness/app/config/app_provider.dart';
 import 'package:rivinha_fitness/app/customers/workout/exercise/new_exercise_store.dart';
-import 'package:rivinha_fitness/app/customers/workout/workout_store.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
 
 class NewExercise extends StatefulWidget {
   const NewExercise({super.key});
@@ -66,8 +62,7 @@ class _NewExerciseState extends State<NewExercise> {
             Observer(builder: (_) {
               return GestureDetector(
                 onTap: store.getImage,
-                child: const Icon(Icons.add_a_photo_outlined,
-                    color: MyColors.gray200, size: 40),
+                child: const Icon(Icons.add_a_photo_outlined, color: MyColors.gray200, size: 40),
               );
             }),
             Padding(
@@ -83,10 +78,7 @@ class _NewExerciseState extends State<NewExercise> {
                 ),
                 child: const Text(
                   'Salvar',
-                  style: TextStyle(
-                      color: MyColors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                  style: TextStyle(color: MyColors.white, fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
             )

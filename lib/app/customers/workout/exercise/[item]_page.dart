@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:rivinha_fitness/model/Exercise.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
+import 'package:rivinha_fitness/modules/workout/data/models/exercise_model.dart';
 import 'package:routefly/routefly.dart';
 
 class ExercisePage extends StatefulWidget {
@@ -19,9 +19,8 @@ class _ExercisePageState extends State<ExercisePage> {
 
   @override
   void initState() {
-    exercise = Routefly.query['item'] != null
-        ? ExerciseModel.fromJson(jsonDecoder.convert(Routefly.query['item']))
-        : null;
+    exercise =
+        Routefly.query['item'] != null ? ExerciseModel.fromJson(jsonDecoder.convert(Routefly.query['item'])) : null;
 
     super.initState();
   }
@@ -133,10 +132,7 @@ class _ExercisePageState extends State<ExercisePage> {
                       ),
                       child: const Text(
                         'Concluir Treino',
-                        style: TextStyle(
-                            color: MyColors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
+                        style: TextStyle(color: MyColors.white, fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
                   ),

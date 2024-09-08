@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rivinha_fitness/theme/my_colors.dart';
+import 'package:rivinha_fitness/app/theme/my_colors.dart';
 
 class ListItem extends StatelessWidget {
-  const ListItem(
-      {super.key, this.onTap, required this.title, required this.description});
+  const ListItem({super.key, this.onTap, required this.title, required this.description});
 
   final void Function()? onTap;
   final String title;
@@ -17,8 +16,7 @@ class ListItem extends StatelessWidget {
         margin: EdgeInsets.zero,
         child: ListTile(
           title: Text(title),
-          subtitle: Text(description,
-              style: const TextStyle(color: MyColors.gray100)),
+          subtitle: Text(description, style: const TextStyle(color: MyColors.gray100)),
           trailing: Icon(Icons.adaptive.arrow_forward),
         ),
       ),
