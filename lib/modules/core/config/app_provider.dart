@@ -9,6 +9,8 @@ import 'package:rivinha_fitness/app/customers/new_customer_store.dart';
 import 'package:rivinha_fitness/app/customers/workout/workout_store.dart';
 import 'package:rivinha_fitness/app/home/home_store.dart';
 import 'package:rivinha_fitness/firebase_options.dart';
+import 'package:rivinha_fitness/modules/customer/customer_module.dart';
+import 'package:rivinha_fitness/modules/customer/domain/useCases/get_customers.dart';
 
 GetIt provider = GetIt.instance;
 
@@ -24,7 +26,8 @@ Future<void> setupProvider() async {
   provider.registerSingleton<FirebaseApp>(firebaseApp);
   provider.registerSingleton<AuthStore>(AuthStore());
   provider.registerSingleton<HomeStore>(HomeStore());
-  provider.registerSingleton<CustomerStore>(CustomerStore());
+  registerCustomerModule(provider);
+  provider.registerSingleton<CustomerStore>(CustomerStore(provider<GetCustomersImpl>()));
   provider.registerSingleton<WorkoutStore>(WorkoutStore());
   provider.registerSingleton<NewCustomerStore>(NewCustomerStore());
 }
@@ -32,7 +35,6 @@ Future<void> setupProvider() async {
 Future<void> setupApp() async {
   await setupProvider();
 
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light));
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.light));
 }

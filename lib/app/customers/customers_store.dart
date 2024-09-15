@@ -1,6 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:rivinha_fitness/modules/core/services/database.dart';
 import 'package:rivinha_fitness/modules/customer/data/models/customer_model.dart';
+import 'package:rivinha_fitness/modules/customer/domain/useCases/get_customers.dart';
 import 'package:rivinha_fitness/modules/workout/data/models/workout_model.dart';
 part 'customers_store.g.dart';
 
@@ -8,15 +9,20 @@ part 'customers_store.g.dart';
 class CustomerStore = _CustomerStoreBase with _$CustomerStore;
 
 abstract class _CustomerStoreBase with Store {
+  final GetCustomersImpl getCustomersImpl;
+
+  _CustomerStoreBase(this.getCustomersImpl) {
+    getCustomers();
+  }
+
   Database database = Database();
 
   @action
   getCustomers() async {
-    database.getCustomers().listen((event) {
-      List<CustomerModel> databaseCustomers =
-          event.docs.map((e) => CustomerModel.fromJson(e.data()).copyWith(id: e.id)).toList();
+    var result = await getCustomersImpl();
 
-      customers = ObservableList<CustomerModel>.of(databaseCustomers);
+    result.fold((l) => print('Falhoou $l'), (r) {
+      customers = ObservableList<CustomerModel>.of(r);
     });
   }
 
