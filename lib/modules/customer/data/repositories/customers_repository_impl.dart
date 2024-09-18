@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:rivinha_fitness/modules/customer/data/datasources/customer_datasource.dart';
 import 'package:rivinha_fitness/modules/customer/data/errors/datasource_error.dart';
@@ -18,5 +20,17 @@ class CustomersRepositoryImpl implements CustomerRepository {
     } catch (e) {
       return Left(DataSourceError(message: 'Erro ao buscar os clientes'));
     }
+  }
+
+  @override
+  Future<Either<FailureCustomers, void>> createCustomer({required CustomerModel customer}) {
+    // TODO: implement createCustomer
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<FailureCustomers, String>> uploadCustomerPhoto({required File file, required String customerId}) {
+    // TODO: implement uploadPhoto
+    throw UnimplementedError();
   }
 }
